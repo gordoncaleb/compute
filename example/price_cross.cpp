@@ -28,15 +28,15 @@ int main()
     compute::context context(gpu);
     compute::command_queue queue(context, gpu);
 
-    // prices #1 (from 10.0 to 11.0)
+    // prices #1 (from 20.0 to 50.0)
     std::vector<float> prices1;
-    for(float i = 10.0; i <= 11.0; i += 0.1){
+    for(float i = 20.0; i <= 50.0; i += 0.1){
         prices1.push_back(i);
     }
 
     // prices #2 (from 11.0 to 10.0)
     std::vector<float> prices2;
-    for(float i = 11.0; i >= 10.0; i -= 0.1){
+    for(float i = 100.0; i >= 10.0; i -= 0.1){
         prices2.push_back(i);
     }
 
@@ -61,7 +61,6 @@ int main()
         return second < first;
     });
 
-    // find cross point (should be 10.5)
     compute::vector<float>::iterator iter = boost::get<0>(
         compute::find_if(
             compute::make_zip_iterator(
