@@ -31,7 +31,7 @@ float rand_float(float lo, float hi)
 int main()
 {
     // number of options
-    const int N = 100000000;
+    const int N = 200000000;
 
     // black-scholes parameters
     const float risk_free_rate = 0.02f;
