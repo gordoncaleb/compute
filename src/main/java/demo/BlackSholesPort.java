@@ -4,7 +4,7 @@ import java.util.Random;
 
 public class BlackSholesPort {
 
-    private Random rand = new Random();
+    private Random rand = new Random(123L);
     // number of options
     final int N = 200000000;
 
