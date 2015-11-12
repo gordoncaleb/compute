@@ -23,8 +23,9 @@ public class BlackSholesPort {
 
     private void run() {
 
-        System.out.println("Building random input data...");
+        System.out.println("Starting Demo of OpenCL Black Scholes implementation");
 
+        System.out.println("Building random input data...");
         float[] stock_price_data = new float[N];
         float[] option_strike_data = new float[N];
         float[] option_years_data = new float[N];

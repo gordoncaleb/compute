@@ -30,6 +30,8 @@ float rand_float(float lo, float hi)
 // this example demostrates a black-scholes option pricing kernel.
 int main()
 {
+    std::cout << "Starting Demo of OpenCL Black Scholes implementation" << std::endl;
+
     // number of options
     const int N = 200000000;
 
