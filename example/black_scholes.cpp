@@ -134,6 +134,8 @@ int main()
     kernel.set_arg(5, risk_free_rate);
     kernel.set_arg(6, volatility);
 
+    std::cout << "Running OpenCL version of Black Scholes alg" << std::endl;
+
     struct timeval start, end;
     gettimeofday(&start,NULL);
     

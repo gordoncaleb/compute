@@ -36,6 +36,7 @@ public class BlackSholesPort {
         double[] call_result = new double[N];
         double[] put_result = new double[N];
 
+        System.out.println("Running Java version of Black Scholes alg");
         long t = System.currentTimeMillis();
         black_scholes(
                 call_result,
