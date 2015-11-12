@@ -10,7 +10,7 @@
 
 #include <cstdlib>
 #include <iostream>
-
+#include <sys/time.h>
 #include <boost/compute/command_queue.hpp>
 #include <boost/compute/system.hpp>
 #include <boost/compute/algorithm/copy_n.hpp>
@@ -134,6 +134,9 @@ int main()
     kernel.set_arg(5, risk_free_rate);
     kernel.set_arg(6, volatility);
 
+    struct timeval start, end;
+    gettimeofday(&start,NULL);
+    
     // execute black-scholes kernel
     queue.enqueue_1d_range_kernel(kernel, 0, N, 0);
 
@@ -142,8 +145,18 @@ int main()
     compute::copy_n(put_result.begin(), 1, &put0, queue);
     compute::copy_n(call_result.begin(), 1, &call0, queue);
 
+    gettimeofday(&end,NULL);
+
+    long mtime, seconds, useconds;
+    seconds  = end.tv_sec  - start.tv_sec;
+    useconds = end.tv_usec - start.tv_usec;
+
+    mtime = ((seconds) * 1000 + useconds/1000.0) + 0.5;
+
     std::cout << "option 0 call price: " << call0 << std::endl;
     std::cout << "option 0 put price: " << put0 << std::endl;
+
+    std::cout << "Time: " << mtime << std::endl;
 
     // due to the differences in the random-number generators between Operating Systems
     // and/or compilers, we will get different "expected" results for this example
