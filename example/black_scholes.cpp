@@ -41,7 +41,9 @@ int main()
     compute::device gpu = compute::system::default_device();
     compute::context context(gpu);
     compute::command_queue queue(context, gpu);
-    std::cout << "device: " << gpu.name() << std::endl;
+    std::cout << "GPU device: " << gpu.name() << std::endl;
+
+    std::cout << "Building random input data..." << std::endl;
 
     // initialize option data on host
     std::vector<float> stock_price_data(N);
@@ -158,7 +160,7 @@ int main()
     std::cout << "option 0 call price: " << call0 << std::endl;
     std::cout << "option 0 put price: " << put0 << std::endl;
 
-    std::cout << "Time: " << mtime << std::endl;
+    std::cout << "Time: " << mtime << "ms" << std::endl;
 
     // due to the differences in the random-number generators between Operating Systems
     // and/or compilers, we will get different "expected" results for this example
